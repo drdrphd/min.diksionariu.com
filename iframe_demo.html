@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<style>
+		* {
+			box-sizing: border-box;
+			font-family: arial, sans-serif;
+		}
+		html {
+			margin: 0;
+			padding: 0;
+			overscroll-behavior: none;
+		}
+		body {
+			display: block;
+			position: relative;
+			margin: 0;
+		}
+		#example-header {
+			width: 100%;
+			background: #3fc9ff;
+			color: white;
+			padding: 2em;
+		}
+		#header-logo {
+			display: block;
+			height: 7em;
+			width: 7em;
+			float: left;
+			background: no-repeat url(logo.svg);
+			background-size: cover;
+			margin-right: 3em;
+		}
+		#example-footer {
+			width: 100%;
+			margin-top: 3em;
+			padding: 1em;
+			background: black;
+			color: white;
+		}
+		.fixed-background {
+			position: fixed;
+			top: 0;
+			height: 100vh;
+			width: 100vw;
+			overflow: hidden;
+			z-index: -10;
+			background: #d9f3fd;
+			background-image: url(logo_light.svg);
+			background-repeat: no-repeat;
+			background-size: 60%;
+			background-position: 50vw 50vh;
+		}
+		#example-main {
+			columns: 2;
+			padding: 3% 10% 0 10%;
+		}
+		#example-main > * {
+			display: inline-block;
+			border-radius: 1em;
+			width: 90%;
+			margin: 5%;
+			border: 2px solid gray;
+		}
+		.tile {
+			padding: 1em;
+			color: white;
+		}
+		.tile:nth-child(3n+2) {
+			background: green;
+		}
+		.tile:nth-child(3n+1) {
+			background: #2796c1;
+		}
+		.tile:nth-child(3n+0) {
+			background: orange;
+		}
+			
+		
+	</style>
+</head>
+<body>
+	<div id="example-header" >
+	    <div id="header-logo"></div>
+		<h1>Lorem Ipsum</h1>
+	    <h3><i>Et egestas nisl hendrerit venenatis tempus fringilla ante cras dolor sollicitudin</i></h3>
+	</div>
+	<div class="fixed-background"> </div>
+	<div id="example-main">
+		<div class="tile">
+			<h4>At elementum pulvinar varius aliquam odio lacus nostra ex quam, velit proin placerat tristique cubilia pharetra posuere dapibus enim curae, tortor dui inceptos nec sapien morbi vestibulum sociosqu.</h4>
+			<blockquote>Elementum consectetur eleifend volutpat turpis adipiscing mus vulputate ultricies arcu suscipit quisque magna, rhoncus vehicula cras torquent nibh aliquet nam ut enim ornare pellentesque.</blockquote>
+		</div>
+		<iframe
+			width="300"
+			height="500"
+			src="https://min.diksionariu.com">
+		</iframe>
+		<div class="tile">
+			<h3>Per nam tincidunt felis aliquet est ligula blandit convallis eget, sapien venenatis posuere eleifend scelerisque adipiscing dictumst augue magna platea, dictum nisi sem lacinia morbi etiam neque consequat.</h3>
+			<ul>
+				<li>Sed eros ultricies quis vestibulum rhoncus arcu ornare risus etiam</li>
+				<li>Sociosqu eleifend interdum risus curae amet suspendisse eget fermentum</li>
+				<li>Ante aptent bibendum ad curabitur placerat libero integer torquent risus</li>
+				<li>Nunc eget feugiat fames varius enim curae tellus ultrices</li>
+				<li>Placerat magna quisque id risus ut accumsan dui, ante praesent non viverra morbi mauris habitant</li>
+				<li>Sollicitudin lacinia gravida cras conubia lorem consectetur lacus suspendisse lobortis</li>
+				<li>Eros nullam posuere sem torquent interdum luctus lectus auctor dapibus</li>
+			</ul>
+		</div>
+		<div class="tile">
+			<p>Nisl dapibus porttitor rhoncus laoreet ut consequat sem, integer nascetur mauris semper primis molestie litora nullam, lacinia purus luctus ipsum ultricies inceptos habitant, placerat egestas diam non torquent aenean.</p>
+			<p>Et egestas nisl hendrerit venenatis tempus fringilla ante cras dolor sollicitudin, elit interdum sapien magnis nulla metus ex convallis aptent, tortor potenti dis aliquam placerat semper suspendisse felis elementum.</p>
+		</div>
+		<div class="tile">
+			<h3>Luctus tortor integer viverra aliquet consequat quisque id a, natoque aptent rhoncus ad nec nisi nam, felis eget magna aliquam maximus ornare pellentesque.</h3>
+			<blockquote>Placerat mus rhoncus primis ac curabitur vehicula porta mattis, viverra conubia dolor nostra vulputate et phasellus elementum ridiculus, litora tortor ligula nisi nec hac lacus.</blockquote>
+			<blockquote>Primis vehicula sociosqu montes ornare nisl class viverra scelerisque interdum dolor, consectetur quisque efficitur nascetur gravida praesent amet vel tristique, commodo ac elementum dictumst cubilia magnis pulvinar blandit purus.</blockquote>
+		</div>
+	</div>
+	<div id="example-footer">
+		<h4>Ante aptent bibendum ad curabitur placerat libero integer torquent risus</h4>
+</body>
+</html>

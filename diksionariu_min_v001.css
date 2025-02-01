@@ -1,0 +1,339 @@
+/*-------------------------
+CSS for diksionariu.com API
+v.001, 2024/12/18
+
+CSS Contents:
+ ** Color Variables **
+	
+ ** Main Container **
+
+ ** Search Bar **
+ ** Results Block **
+	** Partial Matches **
+	** Fuzzy Search **
+ 
+ ** Templates **
+ 
+ ** Mobile Formatting **
+ 
+---------------------------*/
+
+/******* Color Variables *******/
+:root {
+	--diksionariu_main: #07c;			/*blue*/
+	--diksionariu_lighter: #5bf;		/*medium blue*/
+	--diksionariu_highlight: #daf3ff;	/*light blue*/
+	--background_white: white;
+	--text_black: black;
+	--text_white: white;
+	--text_bold: black;
+	--text_button: black;
+	--text_error: #800;				/*medium red*/
+	--text_minor_gray: #444;		/*dark gray*/
+	--text_redirect_gray: #666;		/*medium-dark gray*/
+	--text_medium_gray: #999;		/*medium gray*/
+	--text_light_gray: #ccc;		/*light gray*/
+	--placeholder_gray: gray;	
+	--trim_white: white;
+	--block_light_gray: #eee;		/*very light gray*/
+	--block_med_gray: #ddd;			/*light gray*/
+	--block_dark_gray: #bbb;		/*medium light gray*/
+	--block_gray_text: gray;
+	--visited_link: darkblue;
+	--markup_link: #07c;			/*blue (same as main)*/
+	--markup_external: #35b;		/*darker blue*/
+	--horizontal_separator: silver;
+	--fuzzy-bar_color: #07c;		/*same as diksionariu_main*/
+	--fuzzy-bar_gray: #ddd;			/*fairly light gray*/
+}
+
+
+/****** Overall Style *******/
+html {
+	box-sizing: border-box;
+	background: var(--text_white);
+}
+body {
+	margin: 1em;
+}
+
+
+/****** Main Container *******/
+#diksionariu {
+	max-width: 700px;
+	margin: auto;
+	font-family: Helvetica,Arial,Lucida,sans-serif;
+}
+
+
+/******* Search Bar *******/
+#diksionariu-search {
+	position: fixed;
+	top: 0;
+	left: 50%;
+	transform: translate(-50%,0);
+	padding: 1em;
+	width: calc(100% - 2em);
+	max-width: 700px;
+	background: var(--background_white);
+	font-weight: bold;
+	z-index: 100;
+}
+#search-entry-and-button {
+	display: flex;
+	align-items: center;
+	border-radius: 0.25em;
+}
+#diksionariu-entry {
+	flex-grow: 1;
+	height: 2em;
+	padding: 0 0.5em;
+	border: solid 1px var(--block_med_gray);
+	color: var(--text_black);
+	background-color: var(--background_white);
+	font-size: 1em;
+}
+#diksionariu-entry::placeholder {
+  font-style: italic;
+  color: var(--placeholder_gray);
+}
+#diksionariu-submit-button-CH {
+	height: 2em;
+	width: 3em;
+	margin-left: -6em;
+	padding: 0 0.75em;
+	border: solid 1px var(--diksionariu_main);
+	color: var(--text_white);
+	background: var(--diksionariu_main);
+	font-size: 1em;
+	cursor: pointer;
+}
+#diksionariu-submit-button-Eng {
+	height: 2em;
+	width: 3em;
+	padding: 0 0.5em;
+	border: solid 1px var(--diksionariu_main);
+	border-left: solid 1px var(--markup_external);
+	color: var(--text_white);
+	background: var(--diksionariu_main);
+	font-size: 1em;
+	cursor: pointer;
+}
+#diksionariu-branding {
+	margin:0.25em;
+	font-size: 0.6em;
+	color: var(--text_light_gray);
+}
+#diksionariu-branding a {
+	color: var(--text_light_gray);
+	text-decoration: none;
+}
+#diksionariu-branding a:hover {
+	color: var(--diksionariu_lighter);
+	text-decoration: underline;
+}
+
+
+/******* Results Block *******/
+#diksionariu-results {
+	display: block;
+	min-height: calc(100% - 3em);
+	color: var(--text_black);
+	background-color: var(--background_white);
+	margin: 0.25em;
+	margin-top: 4em;
+	overflow: auto;
+}
+#diksionariu-results a {
+	cursor: pointer;
+}
+#diksionariu-results table {
+	border-collapse: collapse;
+}
+#diksionariu-results table, tr, td {
+	border: 1px solid var(--horizontal_separator);
+	padding: 1em;
+}
+#diksionariu .markup-link {
+	text-decoration: none;
+	cursor: pointer;
+	color: var(--markup_link);
+}
+#diksionariu .markup-link:hover {
+	text-decoration: underline;
+}
+#diksionariu .markup-link.external {
+	color: var(--markup_external);
+}
+#diksionariu .markup-link.external::after {
+	content: "";
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath fill='%2336c' d='M6 1h5v5L8.86 3.85 4.7 8 4 7.3l4.15-4.16zM2 3h2v1H2v6h6V8h1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1'/%3E%3C/svg%3E");
+	display: inline-block;
+	width: 0.8em;
+	height: 0.8em;
+	margin-left: 0.2em;
+}
+
+#diksionariu-results .redirect-text {
+	font-size: .8em;
+	font-style: italic;
+	color: var(--text_redirect_gray);
+}
+
+#diksionariu-results .entry {
+	padding: 1em 2em 3em 3em;
+}
+#diksionariu-results .entry h1 {
+	position: relative;
+	left: -0.8em;
+}
+
+#diksionariu .results-single > div + div {
+	border-top: solid 1px var(--horizontal_separator);
+}
+#diksionariu .results-single .entry-field {
+	display: block;
+	margin-left: 1em;
+	line-height: 1.5;
+}
+#diksionariu .results-single a:hover {
+	text-decoration: underline;
+}
+#diksionariu .minor-content {
+	font-size: 85%;
+	color: var(--text_minor_gray);
+}
+#diksionariu-results .minor-content h3 {
+    margin-bottom: 0.5em;
+}
+#diksionariu-results .entry .content:nth-of-type(n+2){
+	margin-top: 2em;
+}
+
+#diksionariu .results-english a {
+	text-decoration: underline !important;
+	color: var(--text_black) !important;
+}
+#diksionariu .highlight {
+	background-color: var(--diksionariu_highlight);
+}
+#diksionariu .no-result {
+	color: var(--text_error);
+	font-size: 1.15em;
+	padding-left: 1em;
+}
+#diksionariu .no-result-link {
+	color: inherit !important;
+	text-decoration: none;
+	font-size: .825em;
+}
+#diksionariu .no-result-link:hover {
+	text-decoration: underline;
+}
+
+
+/******* Templates *******/
+#diksionariu .ex-ch {
+	font-style: italic;
+}
+#diksionariu .ex-eng {
+	font-style: normal;
+}
+#diksionariu-results .entry-field > .ex-ch {
+	display: list-item;
+	margin-left: 1.75em;
+	margin-top: .5em;
+}
+#diksionariu-results .entry-field > .ex-ch:first-of-type {
+	margin-top: 1em;
+}
+#diksionariu-results .entry-field > .ex-eng {
+	margin-left: 2.25em;
+}
+
+
+/******* Partial Matches *******/
+#diksionariu .partial-container {
+	display: flex;
+	flex-wrap: wrap;
+	margin: 0;
+}
+#diksionariu .partial-subcontainer {
+	flex: 1;
+	min-width: 0;
+	margin: 0;
+}
+#diksionariu .partial-results {
+	margin: 2em;
+}
+#diksionariu .partial-match {
+	line-height: 2;
+	white-space: nowrap;
+}
+#diksionariu .partial-match a {
+	color: var(--diksionariu_main);
+	text-decoration: none;
+}
+
+
+/******* Fuzzy Search *******/
+#diksionariu .fuzzy-container {
+	margin: 2em;
+}
+#diksionariu .fuzzy-container-columns {
+	column-count: 2;
+	column-gap: 3em;
+}
+#diksionariu .fuzzy-match {
+	line-height: 2;
+	white-space: nowrap;
+}
+#diksionariu .match-strength {
+	display: inline-block;
+	margin: 0 1em;
+	height: 0.35em;
+	width: 5em;
+	background: var(--fuzzy-bar_gray);
+}
+#diksionariu .match-strength-bar {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	background: var(--fuzzy-bar_color);
+}
+#diksionariu .fuzzy-container a {
+	color: var(--diksionariu_main);
+	text-decoration: none;
+}
+#diksionariu .fuzzy-container a:hover {
+	text-decoration: underline;
+}
+
+
+
+
+/******* Mobile formatting *******/
+@media only screen and (max-width: 600px) {
+	#diksionariu .partial-container {
+		flex-direction: column;
+	}
+}
+@media only screen and (max-width: 500px) {
+	#diksionariu-results {
+		margin: 0;
+		margin-top: 4em;
+	}
+	#diksionariu-results .entry {
+		padding: 0.5em 1em 1em 2em;
+		font-size: .93em;
+	}
+	#diksionariu .partial-results {
+		margin: 1em;
+	}
+	#diksionariu .fuzzy-container {
+		margin: 1em;
+	}
+	#diksionariu .fuzzy-container-columns {
+		column-count: 1;
+	}
+}
